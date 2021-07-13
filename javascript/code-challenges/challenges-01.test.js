@@ -25,9 +25,8 @@ Use `forEach` to loop over the input array. Modify each string, and add the upda
 ------------------------------------------------------------------------------------------------ */
 
 const addExclamation = (arr) => {
-  const exclaimArray = []
-  let exclaim = arr.forEach(element => element + '!');
-  exclaimArray.push(exclaim);
+  let exclaimArray = []
+  arr.forEach(element => exclaimArray.push(element + '!'));
   return(exclaimArray);
   // Solution code here...
 };
@@ -41,8 +40,9 @@ Use `forEach` to loop over the input array. The modified strings should each be 
 ------------------------------------------------------------------------------------------------ */
 
 const allUpperCase = (arr) => {
-  // const upperArray = [];
-  // let uppercase = 
+  let upperArray = [];
+  arr.forEach(element => upperArray.push(element.toUpperCase()));
+  return(upperArray);
   // Solution code here...
 };
 
@@ -57,10 +57,14 @@ Use `forEach` to build a new array of strings, each string modified by the callb
 ------------------------------------------------------------------------------------------------ */
 
 const greeting = (word) => {
+  return(word.toUpperCase() + '!');
   // Solution code here...
 };
 
-const speaker = (words, callback) => {
+const speaker = (words, greeting) => {
+  let greetArray = []
+  words.forEach(element => greetArray.push(greeting(element)));
+  return(greetArray);
   // Solution code here...
 };
 
@@ -81,11 +85,16 @@ Return the modified array.
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr, value) => {
+  arr.push(value);
   // Solution code here...
 };
 
-const addNumbers = (num, arr, times, callback) => {
+const addNumbers = (num, arr, times, addValues) => {
+    for (let i = 0; i < times; i++) {
+      addValues(arr, num);
+    }
   // Solution code here...
+  return(arr);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -106,8 +115,16 @@ The inventory is formatted like this:
 This function should use forEach to populate your grocery list based on the store's inventory. If the item is available, add it to your list. Return the final list.
 ------------------------------------------------------------------------------------------------ */
 
-const createList = (availableItems) => {
-  // Solution code here...
+const createList = (inventory) => {
+  let myList = []
+  inventory.forEach(element => {
+    if (element.available === true) {
+    myList.push(element.name);
+    return;
+    }
+  });
+//   // Solution code here...
+  return(myList);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -124,8 +141,20 @@ Iterate over the array using forEach to determine the output based on several ru
 Return the resulting output array.
 ------------------------------------------------------------------------------------------------ */
 
-const fizzbuzz = (arr) => {
+const fizzbuzz = (inputs) => {
+  
+  inputs.forEach(element => {
+    if (element % 3 == 0 && element % 5 == 0) {
+      inputs.splice(inputs.indexOf(element), 1, "Fizz Buzz");
+    } else if (element % 3 == 0) {
+      inputs.splice(inputs.indexOf(element), 1, "Fizz");
+    } else if (element % 5 == 0) {
+      inputs.splice(inputs.indexOf(element), 1, "Buzz");
+    } 
+    return;
+  })
   // Solution code here...
+  return(inputs);
 };
 
 /* ------------------------------------------------------------------------------------------------
@@ -179,7 +208,7 @@ describe('Testing challenge 6', () => {
   });
 });
 
-xdescribe('Testing challenge 7', () => {
+describe('Testing challenge 7', () => {
   const inputs = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16];
 
   test('It should print out messages or numbers', () => {
