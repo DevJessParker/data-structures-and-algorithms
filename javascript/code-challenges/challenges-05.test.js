@@ -24,11 +24,11 @@ Write a function named addValues that, given an array of numbers as input, uses 
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr) => {
-  let arraySum = arr.reduce(function (accumulator, currentValue) {
-    return(arraySum)
-  }, 0)
+  let arraySum = arr.reduce((accumulator, currentValue) => accumulator + currentValue, 0); 
+    return(arraySum);
+  }
   // Solution code here...
-}
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -43,6 +43,8 @@ Write a function named addPurchases that, given an array of objects as input, us
 ------------------------------------------------------------------------------------------------ */
 
 const addPurchases = (arr) => {
+  let arraySum = arr.reduce((accumulator, currentValue) => element.accumulator + element.currentValue, 0); 
+    return(arraySum);
   // Solution code here...
 };
 
