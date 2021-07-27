@@ -37,9 +37,10 @@ Write a function named checkValues that takes in an object and a value and retur
 ------------------------------------------------------------------------------------------------ */
 
 const checkValues = (obj, value) => {
-  if (Object.value(obj).includes(value)) {
-    return(true);
-  }
+
+  return(Object.values(obj).includes(value));
+
+  
   // Solution code here...
 };
 
@@ -63,6 +64,15 @@ HR has asked you to change the data to make it easier to print so that it looks 
 ------------------------------------------------------------------------------------------------ */
 
 const updateNumbers = (obj) => {
+
+  const newArray = []
+  const final = Object.entries(obj)
+  for (index of final) {
+    `${index[0]}: ${index[1]}`
+    final2.push(index)
+  }
+
+  return(newArray)
   // Solution code here...
 };
 
@@ -119,9 +129,11 @@ const characters = [
 
 const getHouses = (arr) => {
   let houses = [];
-  // Solution code here...
+  arr.forEach(element => houses.push(element.house))
   return houses;
 };
+  // Solution code here...
+
 
 /*------------------------------------------------------------------------------------------------
 CHALLENGE 6
