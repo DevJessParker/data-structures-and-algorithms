@@ -24,11 +24,11 @@ Write a function named addValues that, given an array of numbers as input, uses 
 ------------------------------------------------------------------------------------------------ */
 
 const addValues = (arr) => {
-  let arraySum = arr.reduce(function (accumulator, currentValue) {
-    return(arraySum)
-  }, 0)
+  let arraySum = arr.reduce((a, b) => a + b, 0); 
+    return(arraySum);
+  }
   // Solution code here...
-}
+
 
 /* ------------------------------------------------------------------------------------------------
 CHALLENGE 3
@@ -43,6 +43,11 @@ Write a function named addPurchases that, given an array of objects as input, us
 ------------------------------------------------------------------------------------------------ */
 
 const addPurchases = (arr) => {
+  const finalArr = []  
+  const array1 = arr.map(element => Object.values(element))
+  array1.forEach(element => finalArr.push(element[1]));
+  const answer = finalArr.reduce((a, b) => a + b, 0);
+  return(answer)
   // Solution code here...
 };
 
@@ -55,6 +60,15 @@ Note: You may not use the array's built-in length property.
 ------------------------------------------------------------------------------------------------ */
 
 const countNumberOfElements = (arr) => {
+  let i = 0
+  arr.reduce(function (accumulator, currentValue) {
+    if (accumulator.indexOf(currentValue) === -1) {
+      i = i + 1
+    }
+    return accumulator
+  }, [])
+  
+  return(i)
   // Solution code here...
 };
 
@@ -115,6 +129,12 @@ let starWarsData = [{
 }];
 
 const returnNames = (arr) => {
+  const newArray = []
+  arr.map(element => newArray.push(element.name))
+  return(newArray)
+
+
+
   // Solution code here...
 };
 
@@ -127,6 +147,9 @@ Note: You must use reduce for this challenge. You may not use the built-in .reve
 ------------------------------------------------------------------------------------------------ */
 
 const reversedString = (str) => {
+  const split = str.split("")
+  const answer = split.reduceRight((a,b) => a.concat(b))
+  return(answer)
   // Solution code here...
 };
 
