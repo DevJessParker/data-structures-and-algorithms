@@ -60,6 +60,7 @@ describe('Linked List', () => {
     list.append(5);
     const result = list.toString();
     expect(result).toEqual("{1} -> {3} -> {5} -> NULL")
+    console.log('pleasepushmystuff');
   })
 
 })
