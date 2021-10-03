@@ -1,5 +1,6 @@
 'use strict';
 
+const { urlToHttpOptions } = require('url');
 const util = require('util');
 const Node = require('./node.js');
 
@@ -222,69 +223,64 @@ class LinkedList {
   }
 
   indexFromTail(index) {
-    let length = (list.sizeOf() - index);
+  
+    let length = this.sizeOf();
     let node = this.head;
-
-    for (let i = 0; i < length; i++) {
+    
+    if(length === 1) {return('Length of list is 1')};
+    if(index > length) {return('Value exceeds length')};
+    if(index < 0) {return('Value is negative')};
+    if(length === index) {return('Value and length of list are equal')};
+    for (let i = 1; i < length - index; i++) {
       node = node.next;
     }
     return node;
   }
+  
+}
+const node1 = new Node(1);
+const node2 = new Node(3);
+const node3 = new Node(5);
+const node4 = new Node(7);
+node1.next = node2;
+node2.next = node3;
+node3.next = node4;
+let list = new LinkedList(node1);
 
+const node5 = new Node(2);
+const node6 = new Node(4);
+const node7 = new Node(6);
+const node8 = new Node(8);
+node5.next = node6;
+node6.next = node7;
+node7.next = node8;
+let list2 = new LinkedList(node5);
 
+function zipLists(list, list2) {
+  let zipped = new LinkedList();
+  let currentA = list.head;
+  let currentB = list2.head;
+  let currentZipped = zipped.head;
+  while (currentA && currentB) {
+    if (currentZipped === null) {
+      zipped.head = currentA;
+      currentZipped = zipped.head;
+      currentA = currentA.next;
+    };
+    currentZipped.next = currentB;
+    currentB = currentB.next;
+    currentZipped = currentZipped.next;
+    currentZipped.next = currentA;
+    currentA = currentA.next;
+    currentZipped = currentZipped.next;
+  }
+  currentA ? currentZipped.next = currentA : currentZipped.next = currentB;
+  return zipped;
 }
 
-// function zipLists(list, list2) {
-//   let zipped = new LinkedList(list);
-//   let nodeList1 = list.head;
-//   let nodeList2 = list2.head;
-//   let nodeList3 = zipped.head;
-  
-//   if (!nodeList1 && !nodeList2) {
-//     return null;
-//   } 
-  
-//   if (!nodeList3) {
-//     nodeList3 = nodeList2;
-//     return zipped
-//   }
+// console.log('final result', zipLists(list, list2));
 
-//   while (nodeList1 || nodeList2) {
-//     if (nodeList1 === nodeList3 && nodeList2) {
-//       nodeList3 = nodeList2
-//       nodeList3 = nodeList3.next;
-//       nodeList2 = nodeList2.next;
-//     } else if (nodeList2 === nodeList3 && nodeList1) {
-//       nodeList3 = nodeList2
-//       nodeList3 = nodeList3.next;
-//       nodeList2 = nodeList2.next;
-//     } else {
-//       nodeList1 ? nodeList3 = nodeList1 : nodeList3 = nodeList2;
-//       nodeList3 = nodeList3.next;
-//     }
-//   }
-//   return ('new head', zipped)
-// }
-
-// const node1 = new Node(1);
-// const node2 = new Node(3);
-// const node3 = new Node(5);
-// const node4 = new Node(7);
-// node1.next = node2;
-// node2.next = node3;
-// node3.next = node4;
-// let list = new LinkedList(node1);
-
-// const node5 = new Node(2);
-// const node6 = new Node(4);
-// const node7 = new Node(6);
-// const node8 = new Node(8);
-// node5.next = node6;
-// node6.next = node7;
-// node7.next = node8;
-// let list2 = new LinkedList(node5);
-
-// const show = {showHidden: false, depth: null}
+const show = {showHidden: false, depth: null}
 // console.log(util.inspect(list, show))
 // console.log(util.inspect(list2, show))
 
@@ -297,4 +293,4 @@ class LinkedList {
 // console.log('kth index', list.indexFromTail(2));
 // console.log('zipped list', util.inspect(zipLists(list, list2), show));
 
-module.exports = LinkedList
+module.exports = {LinkedList, zipLists}
