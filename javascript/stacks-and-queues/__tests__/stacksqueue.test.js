@@ -60,34 +60,58 @@ describe('Stacks and Queues', () => {
     expect(error).toBe('Stack is empty.')
   })
 
-  xit('can enqueue into a queue', () => {
-
+  it('can enqueue into a queue', () => {
+    let queue = new Queue();
+    queue.enqueue(5);
+    expect(queue.listOne.head.data).toEqual(5);
   })
 
-  xit('can enqueue nultiple nodes into a queue', () => {
-
+  it('can enqueue multiple nodes into a queue', () => {
+    let queue = new Queue();
+    queue.enqueue(5);
+    queue.enqueue(7);
+    queue.enqueue(9);
+    expect(queue.listOne.head.data).toEqual(5);
+    expect(queue.oneLength).toEqual(3);
   })
 
-  xit('can dequeue a given value out of a queue', () => {
-
+  it('can dequeue a given value out of a queue', () => {
+    let queue = new Queue();
+    queue.enqueue(5);
+    queue.dequeue();
+    expect(queue.oneLength).toEqual(0);
   })
 
-  xit('can peek into a queue and see correctly target value', () => {
-
+  it('can peek into a queue and see correctly target value', () => {
+    let queue = new Queue();
+    queue.enqueue(5);
+    queue.enqueue(7);
+    queue.enqueue(9);
+    let front = queue.peek();
+    expect(front.data).toEqual(5);
   })
 
-  xit('can empty a queue by calling dequeue multiple times', () => {
-
+  it('can empty a queue by calling dequeue multiple times', () => {
+    let queue = new Queue();
+    queue.enqueue(5);
+    queue.enqueue(7);
+    queue.dequeue();
+    queue.dequeue();
+    expect(queue.oneLength).toEqual(0);
   })
 
   it('can instantiate an empty queue', () => {
     const emptyQueue = new Queue();
 
-    expect(emptyQueue.front).toEqual(null);
+    expect(emptyQueue.oneLength).toEqual(0);
+    expect(emptyQueue.twoLength).toEqual(0);
   })
 
-  xit('will raise exception when calling enqueue or dequeue on empty queue', () => {
+  it('will raise exception when calling dequeue on empty queue', () => {
+    const emptyQueue = new Queue;
+    const results = emptyQueue.dequeue();
 
+    expect(results).toEqual('Queue is empty.')
   })
 
 })
