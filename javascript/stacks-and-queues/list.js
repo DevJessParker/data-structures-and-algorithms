@@ -23,10 +23,19 @@ class LinkedList {
     return this;
   }
 
+  insertNewHead(data) {
+    let node = new Node(data);
+    let list = this.head
+    this.head = node;
+    this.head.next = list;
+    
+    return this;
+  }
+
   insert(data){
     const node = new Node(data, this.head);
     this.head = node;
-    //this.head = new Node(data, this.head)
+    
     return this
   }
 
@@ -205,10 +214,6 @@ class LinkedList {
       return (null)
     }
 
-    // if (node.next === null) {
-    //   string = `${node.data} -> NULL`
-    //   return (string)
-    // }
 
     while (node) {
       array.push(node.data)
@@ -237,59 +242,5 @@ class LinkedList {
   }
   
 }
-const node1 = new Node(1);
-const node2 = new Node(3);
-const node3 = new Node(5);
-const node4 = new Node(7);
-node1.next = node2;
-node2.next = node3;
-node3.next = node4;
-let list = new LinkedList(node1);
 
-const node5 = new Node(2);
-const node6 = new Node(4);
-const node7 = new Node(6);
-const node8 = new Node(8);
-node5.next = node6;
-node6.next = node7;
-node7.next = node8;
-let list2 = new LinkedList(node5);
-
-function zipLists(list, list2) {
-  let zipped = new LinkedList();
-  let currentA = list.head;
-  let currentB = list2.head;
-  let currentZipped = zipped.head;
-  while (currentA && currentB) {
-    if (currentZipped === null) {
-      zipped.head = currentA;
-      currentZipped = zipped.head;
-      currentA = currentA.next;
-    };
-    currentZipped.next = currentB;
-    currentB = currentB.next;
-    currentZipped = currentZipped.next;
-    currentZipped.next = currentA;
-    currentA = currentA.next;
-    currentZipped = currentZipped.next;
-  }
-  currentA ? currentZipped.next = currentA : currentZipped.next = currentB;
-  return zipped;
-}
-
-// console.log('final result', zipLists(list, list2));
-
-const show = {showHidden: false, depth: null}
-// console.log(util.inspect(list, show))
-// console.log(util.inspect(list2, show))
-
-// console.log('string', list.toString());
-// console.log('insert', list.insert(7));
-// console.log('includes', list.listIncludes('e'));
-// console.log('append at last', util.inspect(list.insertLast(12), show));
-// console.log('insert before value', util.inspect(list.insertBeforeValue('b', 'z'), show));
-// console.log('insert after value', util.inspect(list.insertAfterValue('a', '30'), show));
-// console.log('kth index', list.indexFromTail(2));
-// console.log('zipped list', util.inspect(zipLists(list, list2), show));
-
-module.exports = {LinkedList, zipLists}
+module.exports = LinkedList;
