@@ -126,6 +126,23 @@ class LinkedList {
     return node;
   }
 
+  removeNodeAtPref(value) {
+    let previous = this.head;
+    let node = previous.next;
+     
+    if (!this.head) {
+      return null;
+    }
+    while (node) {
+      if (previous.data.pref === value) {
+        previous.next = node.next;
+        return (previous.data);
+      }
+      previous = previous.next;
+    }
+    return(null);
+  }
+
   removeAt(index) {
     
     if(!this.head || index < 0) {
