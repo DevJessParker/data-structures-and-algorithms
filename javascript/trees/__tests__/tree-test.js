@@ -3,6 +3,7 @@
 const BinaryTree = require('../binary-tree.js');
 const BST = require('../search-tree.js');
 const Node = require('../node.js');
+const { breadthFirst } = require('../breadth-first.js');
 
 describe('Binary Tree', () => {
   it('works', () => {
@@ -67,6 +68,17 @@ describe('Binary Tree', () => {
     tree.add(8);
     const results = tree.findMaxValue();
     expect(results).toEqual(10);
+  })
+
+  it('return the values of a tree with breadth first traversal', () => {
+    const node1 = new Node(5);
+    const tree = new BST(node1);
+    tree.add(1);
+    tree.add(10);
+    tree.add(3);
+    tree.add(8);
+    const results = breadthFirst(tree);
+    expect(results).toEqual([5, 1, 10, 3, 8]);
   })
 
 })

@@ -18,7 +18,6 @@ class BST {
       if (node.right) _walk(node.right);
     }
     _walk(this.root);
-    console.log('PREORDER RES', results)
     return results;
   }
 
@@ -31,7 +30,6 @@ class BST {
       if (node.right) _walk(node.right);
     }
     _walk(this.root);
-    console.log('INORDER RES', results)
     return results;
   }
 
@@ -44,7 +42,6 @@ class BST {
       results.push(node.value);
     }
     _walk(this.root);
-    console.log('POSTORDER RES', results)
     return results;
   }
 
