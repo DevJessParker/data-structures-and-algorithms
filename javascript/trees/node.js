@@ -2,9 +2,9 @@
 
 class Node {
   constructor(value, right = null, left = null) {
-    this.value = value;
-    this.left = left;
-    this.right = right;
+    this.value = value,
+    this.right = right,
+    this.left = left
   }
 }
 
