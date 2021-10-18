@@ -64,7 +64,7 @@ class BST {
 
     if (value === current[direction].value) {
       _walk(current[direction], 'left');
-      console.log( "Values are the same");
+      console.log( "Values are the same. Added to left.");
     }
     if (value < current[direction].value) {
       _walk(current[direction], 'left')
