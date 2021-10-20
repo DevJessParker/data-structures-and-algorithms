@@ -4,6 +4,7 @@ const HashTable = require('../hashtable.js');
 const Tree = require('../tree.js');
 const {repeatedWord} = require('../repeat-word.js');
 const {treeIntersect} = require('../hash-tree.js');
+const {leftJoin} = require('../left-join.js')
 
 
 describe('Hash Table', () => {
@@ -82,6 +83,26 @@ describe('Hash Table', () => {
 
     expect(results).toEqual([10, 5])
 
+  })
+
+  it('should return an array of words in a key -> synonym -> antonym format by right joining two hash tables', () => {
+    let verify = [
+      ["small", "tiny", "big"],
+      ["fat", "curvy", "skinny"],
+      ["large", "giant", "NULL"]
+    ]
+
+    let table1 = new HashTable(10);
+    table1.set('small', 'tiny');
+    table1.set('large', 'giant');
+    table1.set('fat', 'curvy');
+
+    let table2 = new HashTable(10);
+    table2.set('small', 'big');
+    table2.set('fat', 'skinny');
+
+    let results = leftJoin(table1, table2)
+    expect(results).toEqual(verify);
   })
 
 })
