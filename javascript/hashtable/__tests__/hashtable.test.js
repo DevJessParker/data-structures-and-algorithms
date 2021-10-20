@@ -1,7 +1,9 @@
 'use strict';
 
 const HashTable = require('../hashtable.js');
-const {repeatedWord} = require('../repeat-word.js')
+const Tree = require('../tree.js');
+const {repeatedWord} = require('../repeat-word.js');
+const {treeIntersect} = require('../hash-tree.js');
 
 
 describe('Hash Table', () => {
@@ -62,6 +64,24 @@ describe('Hash Table', () => {
     let results = repeatedWord(str);
 
     expect(results).toEqual('do');
+  })
+
+  it('should return the first repeated word in a string', () => {
+    let tree1 = new Tree;
+    let tree2 = new Tree;
+    tree1.add(5)
+    tree1.add(7)
+    tree1.add(9)
+    tree1.add(10)
+    tree2.add(3)
+    tree2.add(10)
+    tree2.add(5)
+    tree2.add(12);
+  
+    let results = treeIntersect(tree1, tree2);
+
+    expect(results).toEqual([10, 5])
+
   })
 
 })
