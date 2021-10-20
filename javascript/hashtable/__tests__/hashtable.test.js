@@ -1,6 +1,7 @@
 'use strict';
 
 const HashTable = require('../hashtable.js');
+const {repeatedWord} = require('../repeat-word.js')
 
 
 describe('Hash Table', () => {
@@ -12,7 +13,7 @@ describe('Hash Table', () => {
   it('should add a key/value pair to the hash table', () => {
      let table = new HashTable(10);
      table.set('name', 'jess');
-     console.log('TABLE', table.map)
+    
      expect(table.map[3].head.value).toEqual({'name': 'jess'});
   })
 
@@ -34,7 +35,7 @@ describe('Hash Table', () => {
     let table = new HashTable(1);
     table.set('baked', 'potato');
     table.set('fried', 'chicken');
-    console.log(table.map)
+    
     expect(table.map[0].head.next.value).toEqual({'fried': 'chicken'});
   })
 
@@ -54,6 +55,13 @@ describe('Hash Table', () => {
     (hash >= 0 || hash <= 10) ? results = true : results = false;
 
     expect(results).toBeTruthy;
+  })
+
+  it('should return the first repeated word in a string', () => {
+    const str = "do not do that"
+    let results = repeatedWord(str);
+
+    expect(results).toEqual('do');
   })
 
 })

@@ -62,23 +62,7 @@ class HashTable {
 
     return null;
 
-  }
-
-  repeatedWord(key) {
-
-    let bucketNumber = this.hash(key);
-
-    if (!this.map[bucketNumber]) {return false}
-    if (this.map[bucketNumber]) {
-
-      let current = this.map[bucketNumber].head;
-      while (current) {
-        let data = current.value;
-        if (data[key]) return true;
-        current = current.next
-      }
-      return false
-    }
+    
   }
 }
 
