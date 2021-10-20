@@ -4,7 +4,8 @@ const HashTable = require('../hashtable.js');
 const Tree = require('../tree.js');
 const {repeatedWord} = require('../repeat-word.js');
 const {treeIntersect} = require('../hash-tree.js');
-const {leftJoin} = require('../left-join.js')
+const {leftJoin} = require('../left-join.js');
+const {uniqueString} = require('../unique.js');
 
 
 describe('Hash Table', () => {
@@ -103,6 +104,13 @@ describe('Hash Table', () => {
 
     let results = leftJoin(table1, table2)
     expect(results).toEqual(verify);
+  })
+
+  it('should verify if a string is made of only unique characters by returning a boolean answer', () => {
+    const results1 = uniqueString('The quick brown fox')
+    const results2 = uniqueString('No thanks son')
+    expect(results1).toBeTruthy
+    expect(results2).toBeFalsy
   })
 
 })

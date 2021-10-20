@@ -4,7 +4,7 @@ function leftJoin(hm1, hm2) {
   let results = [];
   
   for (let i = 0; i < hm1.map.length; i++) {
-    console.log('HASH ONE', hm1.map)
+    // console.log('HASH ONE', hm1.map)
 
     let node = (hm1.map[i] ? hm1.map[i].head : null) 
     
@@ -19,7 +19,7 @@ function leftJoin(hm1, hm2) {
     }
   }
 
-  console.log('***', results)
+  // console.log('***', results)
 
   return results
 }
