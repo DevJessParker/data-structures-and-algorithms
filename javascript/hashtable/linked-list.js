@@ -1,5 +1,7 @@
 'use strict';
 
+const Node = require('./node.js');
+
 class LinkedList {
   constructor() {
     this.head = null;
@@ -29,4 +31,4 @@ class LinkedList {
   }
 }
 
-export default LinkedList;
+module.exports = LinkedList
