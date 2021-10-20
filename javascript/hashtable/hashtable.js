@@ -1,5 +1,7 @@
 'use strict';
 
+const LinkedList = require('./linked-list.js');
+
 class HashTable {
 
   constructor(size) {
@@ -63,6 +65,21 @@ class HashTable {
   }
 
   repeatedWord(key) {
-    
+
+    let bucketNumber = this.hash(key);
+
+    if (!this.map[bucketNumber]) {return false}
+    if (this.map[bucketNumber]) {
+
+      let current = this.map[bucketNumber].head;
+      while (current) {
+        let data = current.value;
+        if (data[key]) return true;
+        current = current.next
+      }
+      return false
+    }
   }
 }
+
+module.exports = HashTable;

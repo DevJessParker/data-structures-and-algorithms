@@ -2,7 +2,7 @@
 
 const {insertionSort} = require('../insertionsort/insertionsort.js')
 
-describe('Linked List', () => {
+describe('Pseudocode Tests', () => {
 
   it('works', () => {
     expect(true).toBeTruthy();
